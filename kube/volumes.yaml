@@ -1,0 +1,56 @@
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: nestjs-kubernetes-pv
+# spec:
+#   capacity:
+#     storage: 2Gi # size of the storage
+#   accessModes: # access mode
+#     - ReadWriteOnce # can be mounted by a single wokrer node for reading and writing
+#     - ReadOnlyMany # can be mounted by a multiple wokrer node for reading only
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: ""
+#   gcePersistentDisk:
+#     pdName: pgdb
+#     fsType: ext4
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   namespace: nestjs-kubernetes-namespace
+#   name: nestjs-kubernetes-volume
+# spec:
+#   resources:
+#     requests:
+#       storage: 1Gi # request 10Gi storage
+#   accessModes:
+#     - ReadWriteOnce # only allow one node can be read and write
+#   storageClassName: ""
+#   volumeName: nestjs-kubernetes-pv
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgresql-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: nestjs-kubernetes-namespace
+  name: postgresql-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
