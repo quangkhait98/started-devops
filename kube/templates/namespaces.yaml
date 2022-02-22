@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   labels:
     app: nestjs-kubernetes-namespace
-  name: nestjs-kubernetes-namespace
+  name: {{ .Values.namespaces.name }}

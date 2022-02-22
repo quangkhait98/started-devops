@@ -1,0 +1,11 @@
+# Default values for example-project.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Release-wide Values
+replicas: 3
+version: 'plain-text'
+
+# Service Specific Values
+hello:
+  image: nginxdemos/hello

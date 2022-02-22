@@ -33,7 +33,7 @@ spec:
             - name: SERVER_PORT
               value: "4000"
             - name: TYPEORM_HOST
-              value: postgres
+              value: 172.17.0.7
             - name: TYPEORM_USERNAME
               value: postgres
             - name: TYPEORM_PORT

@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: nestjs-kubernetes-namespace
-  name: redis-service
+  namespace: {{ .Values.namespaces.name }}
+  name: {{ .Values.redis.service.name }}
 spec:
   selector:
     app: redis
@@ -13,8 +13,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: nestjs-kubernetes-namespace
-  name: redis-deployment
+  namespace: {{ .Values.namespaces.name }}
+  name: {{ .Values.redis.deployment.name }}
 spec:
   selector:
     matchLabels:
@@ -27,8 +27,8 @@ spec:
         app: redis
     spec:
       containers:
-      - name: redis
-        image: redis:5-alpine
+      - name: {{ .Values.redis.container.name }}
+        image: {{ .Values.redis.container.image }}
         ports:
         - containerPort: 6379
         args: ["--requirepass", "$(REDIS_PASSWORD)"]
