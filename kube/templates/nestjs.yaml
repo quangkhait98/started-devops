@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: nestjs
-          image: quangkhait98/started-devops_main:v2
+          image: quangkhait98/started-devops_main:v3
           env:
             - name: SERVER_PORT
               value: "4000"
