@@ -7,7 +7,7 @@ async function bootstrap() {
     logger: ['error', 'warn'],
   });
   Logger.error('SERVER_PORT2');
-  console.log('SERVER_PORT', process.env.SERVER_PORT);
+  console.log('SERVER_PORT12a', process.env.SERVER_PORT);
   await app.listen(process.env.SERVER_PORT);
 }
 bootstrap();
