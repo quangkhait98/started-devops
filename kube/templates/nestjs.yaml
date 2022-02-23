@@ -35,7 +35,7 @@ spec:
             - name: TYPEORM_HOST
               value: postgres-service
             - name: TYPEORM_USERNAME
-              value: root
+              value: postgres
             - name: TYPEORM_PORT
               value: "5432"
             - name: TYPEORM_PASSWORD

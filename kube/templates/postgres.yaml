@@ -36,7 +36,7 @@ spec:
             - name: POSTGRES_DB
               value: test
             - name: POSTGRES_USER
-              value: root
+              value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
