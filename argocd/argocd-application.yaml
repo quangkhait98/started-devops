@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nestjs-kube
+  namespace: argocd
+spec:
+  destination:
+    namespace: nestjs-kubernetes-namespace
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kube
+    repoURL: 'git@github.com:quangkhait98/started-devops.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
